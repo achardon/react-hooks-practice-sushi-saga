@@ -1,14 +1,18 @@
 import React, {useState} from "react";
 
-function Sushi({sushi, emptyPlates, setEmptyPlates}) {
+function Sushi({sushi, emptyPlates, setEmptyPlates, setBalance, balance}) {
 
   const [isEaten, setIsEaten] = useState(false)
   
   
   function handleEatSushi() {
-    console.log('I have been eaten!')
+    //console.log('I have been eaten!')
+    if (balance < sushi.price) {
+      return false
+    }
     setEmptyPlates((currentPlates) => [...currentPlates, sushi])
     setIsEaten(true)
+    setBalance((currBalance) => currBalance - sushi.price)
   }
 
   return (

@@ -9,6 +9,7 @@ function App() {
   const [sushi, setSushi] = useState([])
   const [position, setPosition] = useState(0)
   const [emptyPlates, setEmptyPlates] = useState([])
+  const [balance, setBalance] = useState(140)
 
   useEffect(() => {
     fetch(API)
@@ -24,7 +25,7 @@ function App() {
     setPosition(currentPosition => currentPosition + 4)
   }
 
-  console.log(emptyPlates)
+  //console.log(emptyPlates)
 
   return (
     <div className="app">
@@ -33,8 +34,10 @@ function App() {
       handleMoreSushi={handleMoreSushi}
       emptyPlates={emptyPlates}
       setEmptyPlates={setEmptyPlates}
+      setBalance={setBalance}
+      balance={balance}
       />
-      <Table plates={emptyPlates} />
+      <Table plates={emptyPlates} balance={balance} />
     </div>
   );
 }
