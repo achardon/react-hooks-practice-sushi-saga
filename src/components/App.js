@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import SushiContainer from "./SushiContainer";
 import Table from "./Table";
+import Wallet from "./Wallet";
 
 const API = "http://localhost:3001/sushis";
 
@@ -25,7 +26,13 @@ function App() {
     setPosition(currentPosition => currentPosition + 4)
   }
 
-  //console.log(emptyPlates)
+  function handleSubmit(e) {
+    e.preventDefault()
+    // console.log(typeof(e.target.money.value))
+    // console.log(typeof(balance))
+    const moneyToAdd = parseInt(e.target.money.value)
+    setBalance((currBal) => currBal + moneyToAdd)
+  }
 
   return (
     <div className="app">
@@ -38,6 +45,7 @@ function App() {
       balance={balance}
       />
       <Table plates={emptyPlates} balance={balance} />
+      <Wallet handleSubmit={handleSubmit} />
     </div>
   );
 }

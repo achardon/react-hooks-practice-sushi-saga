@@ -79,3 +79,7 @@ body {
   width: 700px;
   margin: auto;
 }
+
+.wallet {
+  grid-area: tb
+}
