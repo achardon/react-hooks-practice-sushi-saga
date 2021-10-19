@@ -4,13 +4,15 @@ function Sushi({sushi, emptyPlates, setEmptyPlates, setBalance, balance}) {
 
   const [isEaten, setIsEaten] = useState(false)
   
-  
+  //if sushi has already been eaten, do not render!
+  const alreadyEaten = emptyPlates.find(item => item === sushi.id)
+ 
   function handleEatSushi() {
     //console.log('I have been eaten!')
     if (balance < sushi.price) {
       return false
     }
-    setEmptyPlates((currentPlates) => [...currentPlates, sushi])
+    setEmptyPlates((currentPlates) => [...currentPlates, sushi.id])
     setIsEaten(true)
     setBalance((currBalance) => currBalance - sushi.price)
   }
@@ -19,7 +21,7 @@ function Sushi({sushi, emptyPlates, setEmptyPlates, setBalance, balance}) {
     <div className="sushi">
       <div className="plate" onClick={handleEatSushi}>
         {/* Tell me if this sushi has been eaten! */}
-        {isEaten ? null : (
+        {isEaten || alreadyEaten ? null : (
           <img
             src={sushi.img_url}
             alt={sushi.name}

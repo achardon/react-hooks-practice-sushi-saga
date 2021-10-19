@@ -22,8 +22,16 @@ function App() {
 
   const sushiToDisplay = sushi.slice(position, position + 4)
 
+  // console.log(sushi.length)
+
+  //console.log(emptyPlates)
+
   function handleMoreSushi() {
     setPosition(currentPosition => currentPosition + 4)
+    if (position >= sushi.length) {
+      console.log('no more sushi!')
+      setPosition(0)
+    }
   }
 
   function handleSubmit(e) {
