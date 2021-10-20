@@ -12,9 +12,11 @@ function Sushi({sushi, emptyPlates, setEmptyPlates, setBalance, balance}) {
     if (balance < sushi.price) {
       return false
     }
-    setEmptyPlates((currentPlates) => [...currentPlates, sushi.id])
-    setIsEaten(true)
-    setBalance((currBalance) => currBalance - sushi.price)
+    if (isEaten === false) {
+      setEmptyPlates((currentPlates) => [...currentPlates, sushi.id])
+      setIsEaten(true)
+      setBalance((currBalance) => currBalance - sushi.price)
+    }
   }
 
   return (
